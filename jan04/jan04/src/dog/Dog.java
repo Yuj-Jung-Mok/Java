@@ -7,7 +7,7 @@ import animal.Animal;
 import animal.Human;
 
 public class Dog extends Animal {
-	
+	 
 	// 1 - 45 숫자 6개를 뽑아주는 개
 	public Set<Integer> lotto() {
 		Set<Integer> lotto = new HashSet<Integer>();	// 중복 제거
