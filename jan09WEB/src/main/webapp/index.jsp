@@ -1,3 +1,11 @@
+<%@page import="java.util.HashMap"%>
+<%@page import="java.util.Map"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.Connection"%>
 <%@page import="java.time.LocalDate"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -14,6 +22,32 @@
 		LocalDate now = LocalDate.now();	
 		// el 태그 기법, 나중엔 jstl도 사용할 예정
 		String name = "홍길동";
+		
+		// 데이터 베이스 접속
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		// DB 계정 연결 코드 작성해야 합니다.
+		
+		Class.forName("org.mariadb.jdbc.Driver");
+		conn = DriverManager.getConnection(url, id, pw);
+		pstmt = conn.prepareStatement("SELECT * FROM multiboardview LIMIT 0, 10");
+		ResultSet rs = pstmt.executeQuery();
+		
+		List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
+		
+		while(rs.next()) {
+			// map에 담아서 list에 담아줘야 합니다.
+			Map<String, Object> ele = new HashMap<String, Object>();
+			ele.put("mb_no", rs.getInt("mb_no"));
+			ele.put("mb_title", rs.getString("mb_title"));
+			ele.put("mb_date", rs.getString("mb_date"));
+			ele.put("mname", rs.getString("mname"));
+			ele.put("mb_like", rs.getInt("mb_like"));
+			ele.put("mb_load", rs.getInt("mb_load"));
+			
+			list.add(ele);
+		}
 	%>
 	<h1><%=name%> 입니다.</h1>
 	<table class="table table-striped">
@@ -30,15 +64,15 @@
 		
 		<tbody>
 		<%
-			for(int i = 0; i < 10; i++) {
+			for(int i = 0; i < list.size(); i++) {
 		%>
 			<tr>
-				<td><%=i + 1%></td>
-				<td>제목입니다.</td>
-				<td><%=now%></td>
-				<td>포세이돈</td>
-				<td>2</td>
-				<td>5</td>
+				<td><%= list.get(i).get("mb_no") %></td>
+				<td><%= list.get(i).get("mb_title") %></td>
+				<td><%= list.get(i).get("mb_date") %></td>
+				<td><%= list.get(i).get("mname") %></td>
+				<td><%= list.get(i).get("mb_like") %></td>
+				<td><%= list.get(i).get("mb_load") %></td>
 			</tr>
 		<%		
 			}
