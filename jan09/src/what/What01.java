@@ -1,6 +1,29 @@
 package what;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
+class DivdeException extends RuntimeException {
+	public int left;
+	public int right;
+	String 사$ = "4딸라";
+	public DivdeException() {
+		super();
+	}
+	
+	public DivdeException(String message) {
+		super(message);
+	}
+	
+	public DivdeException(String message, int left, int right) {
+		super(message);
+		this.left = left;
+		this.right = right;
+	}
+	
+}
 
 class Calculator {
 	int left, right;
@@ -15,19 +38,21 @@ class Calculator {
 	
 	public void divide() {
 		if(right == 0) {
-			throw new ArithmeticException("0으로 나눌 수 없습니다.");
+			throw new DivdeException("0으로 나눌 수 없습니다.", left, right);
 		}
 		
-		try {
-			System.out.print("계산 결과는 ");
-			System.out.print(this.left / this.right);
-			System.out.print(" 입니다.");
-		} catch (Exception e) {
-			System.out.println("\n\n e.getMessage() : " + e.getMessage());	// 간단한 형태의 예외 정보
-			System.out.println("\n\n e.toString() : " + e.toString());		// 어떤 형태인지 예외 정보
-			System.out.print("\n\n e.printStackTrace() : ");				// 현재 에러 상황 예외 정보
-			e.printStackTrace();
-		}
+		System.out.println(this.left / this.right);
+		
+//		try {
+//			System.out.print("계산 결과는 ");
+//			System.out.print(this.left / this.right);
+//			System.out.print(" 입니다.");
+//		} catch (Exception e) {
+//			System.out.println("\n\n e.getMessage() : " + e.getMessage());	// 간단한 형태의 예외 정보
+//			System.out.println("\n\n e.toString() : " + e.toString());		// 어떤 형태인지 예외 정보
+//			System.out.print("\n\n e.printStackTrace() : ");				// 현재 에러 상황 예외 정보
+//			e.printStackTrace();
+//		}
 		
 		System.out.println("Divide End");
 	}
@@ -75,6 +100,24 @@ class C {
 	void run() throws FileNotFoundException, IOException {
 		B b = new B();
 		b.run();
+	}
+}
+
+class E {
+	void throwArithmeticException() {
+		throw new ArithmeticException();
+	}
+	
+	void throwIOException1() {
+		try {
+			throw new IOException();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	void throwIOException2() throws IOException {
+		throw new IOException();
 	}
 }
 
