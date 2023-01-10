@@ -28,10 +28,13 @@
 		PreparedStatement pstmt = null;
 		
 		// DB 계정 연결 코드 작성해야 합니다.
+		String url = "jdbc:mariadb://wisejia.iptime.org:3306/springreference";
+		String id = "springreference";
+		String pw = "01234567";
 		
 		Class.forName("org.mariadb.jdbc.Driver");
 		conn = DriverManager.getConnection(url, id, pw);
-		pstmt = conn.prepareStatement("SELECT * FROM multiboardview LIMIT 0, 10");
+		pstmt = conn.prepareStatement("SELECT * FROM multiboardview");
 		ResultSet rs = pstmt.executeQuery();
 		
 		List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
@@ -49,7 +52,12 @@
 			list.add(ele);
 		}
 	%>
-	<h1><%=name%> 입니다.</h1>
+	<div>
+		<h1 style="float: left;"><%=name%> 입니다.</h1>
+		<button type="button" class="btn btn-primary" style="float: right;" onclick="location.href='./login.jsp'">로그인</button>
+		<button type="submit" class="btn btn-danger" style="float: right;" onclick="location.href='./write.jsp'">글쓰기</button>
+	</div>
+	
 	<table class="table table-striped">
 		<thead>
 				<tr>
