@@ -50,7 +50,7 @@ class Person2<T extends Info> {
 	public <U> void printInfo(U info) {
 		System.out.println(info);
 	}
-}
+} 
 
 public class What02 {
 
