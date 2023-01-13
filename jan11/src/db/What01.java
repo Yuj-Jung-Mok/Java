@@ -42,11 +42,11 @@ public class What01 {
 		
 		try {
 			// DB쪽으로 SQL문 전송하고 결과값을 다시 리턴해주는 역할
-			stmt = con.createStatement();	// createStatement()는 객체 생성 개념? (발신자 겸 수신자)
+			stmt = con.createStatement();	// createStatement()는 객체 생성 개념? (발신자)
 			// SQL문
 			String sql = "SELECT * FROM member";	// (편지)
 			// 결과값 저장
-			rs = stmt.executeQuery(sql);	// ResultSet : (수신자 및 발신자), executeQuery : (우편 배달부(행동))
+			rs = stmt.executeQuery(sql);	// ResultSet : (수신자), executeQuery : (우편 배달부(행동))
 			System.out.println("결과값 가져오기 성공!  " + rs);
 			while(rs.next()) {
 				int no = rs.getInt("no");

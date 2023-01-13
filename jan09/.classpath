@@ -6,6 +6,6 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Users/yjm/Downloads/jini.jar"/>
+	<classpathentry kind="lib" path="/Users/yjm/Downloads/lib/jini.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
