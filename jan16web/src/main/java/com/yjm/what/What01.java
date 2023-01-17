@@ -83,6 +83,10 @@ public class What01 {
 			System.out.println(s);
 		}
 		
+		int num1 = 9; // 1001
+		int num2 = 5; // 0101
+		int result1 = num1 | num2;
+		System.out.println(Integer.toBinaryString(result1));
 	}
 	
 }
