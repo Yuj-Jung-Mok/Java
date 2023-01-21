@@ -12,13 +12,13 @@
   
   <!-- 일종의 변수 선언 -->
   <servlet>
-  	<servlet-name>servletEx</servlet-name>
+  	<servlet-name>servletTestEx</servlet-name>
   	<servlet-class>com.servlet.TestServlet</servlet-class>
   </servlet>
   
   <!-- 매핑 선언 -->
   <servlet-mapping>
-  	<servlet-name>servletEx</servlet-name>
+  	<servlet-name>servletTestEx</servlet-name>
   	<url-pattern>/ts</url-pattern>
   </servlet-mapping>
   
@@ -58,6 +58,36 @@
   <context-param>
   	<param-name>realServerIP</param-name>
   	<param-value>68.0.30.1</param-value>
+  </context-param>
+  
+  <!-- 서블릿 Config 연습 -->
+  <servlet>
+  	<servlet-name>servletEx</servlet-name>
+  	<servlet-class>com.servlet.ServletEx</servlet-class>
+  	<init-param>
+  		<param-name>adminId</param-name>
+  		<param-value>admin</param-value>
+  	</init-param>
+  	<init-param>
+  		<param-name>adminPw</param-name>
+  		<param-value>1234</param-value>
+  	</init-param>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>servletEx</servlet-name>
+  	<url-pattern>/se</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 서블릿 Context 연습 -->
+  <context-param>
+  	<param-name>testServerIP</param-name>
+  	<param-value>127.0.0.1</param-value>
+  </context-param>
+  
+    <context-param>
+  	<param-name>realServerIP</param-name>
+  	<param-value>128.0.0.1</param-value>
   </context-param>
   
 </web-app>
