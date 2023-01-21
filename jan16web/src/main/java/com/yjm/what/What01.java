@@ -13,14 +13,14 @@ class Test {
 
 		// 데이터 추가하기
 		for (int i = 0; i < n; i++) {
-			map[i] = (int) (Math.random() * (Math.pow(2, n - 1)));
+			map[i] = (int) (Math.random() * (Math.pow(2, n)) - 1);
 		}
 		return map;
 	}
 
 	public String getBinaryCode(int[] map, int n) {
 		String code = "";
-
+		System.out.println("n : " + n);
 		// 데이터 최대 길이수만큼 만들고 저장
 		for (int i = 0; i < n; i++) {
 
