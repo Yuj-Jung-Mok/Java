@@ -1,25 +1,34 @@
 package com.servlet.dao;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.sql.DataSource;
+
 import com.servlet.dto.MemberDTO;
 
 public class MemberDAO {
-	String driver = "org.mariadb.jdbc.Driver";
-	String url = "jdbc:mariadb://localhost:3306/yjm";
-	String id = "yjm";
-	String pw = "01234567";
+//	String driver = "org.mariadb.jdbc.Driver";
+//	String url = "jdbc:mariadb://localhost:3306/yjm";
+//	String id = "yjm";
+//	String pw = "01234567";
+	
+	DataSource dataSource;
 	
 	public MemberDAO() {
 		try {
-			Class.forName(driver);
-		} catch (ClassNotFoundException e) {
+//			Class.forName(driver);
+			// 웹콘테이너의 context를 불러오고			
+			Context context = new InitialContext();
+			// 그 안에 저장되있는 jdbc/maria 라는 name을 가진 객체를 가져온다. !java:comp/env/는 반드시 추가해줘야함
+			dataSource = (DataSource) context.lookup("java:comp/env/jdbc/mariadb");
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
@@ -34,7 +43,8 @@ public class MemberDAO {
 		int a = 0;
 		
 		try {
-			conn = DriverManager.getConnection(url, id, pw);
+			// conn = DriverManager.getConnection(url, id, pw);
+			conn = dataSource.getConnection();
 			String sql = "SELECT * FROM member";
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
