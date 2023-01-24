@@ -13,12 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 public class MBTI extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String[] question = { "당신은 R 입니까?", "당신은 T 입니까?", "당신은 F 입니까?", "당신은 C 입니까?", "당신은 M 입니까?", "당신은 J 입니까?", "당신은 A 입니까?", "당신은 N 입니까?" };
-		String[] survey = { "RT", "TR", "FC", "CF", "MJ", "JM", "AN", "NA" };
-		
+		String[] question = { "당신은 T 입니까?", "당신은 R 입니까?", "당신은 C 입니까?", "당신은 F 입니까?", "당신은 J 입니까?", "당신은 M 입니까?", "당신은 N 입니까?", "당신은 A 입니까?" };
 		request.setAttribute("question", question);
-		request.setAttribute("survey", survey);
-		
 		RequestDispatcher rd = request.getRequestDispatcher("/mbti.jsp");
 		rd.forward(request, response);
 	}
