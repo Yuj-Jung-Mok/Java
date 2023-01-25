@@ -51,7 +51,8 @@
 		height: 50px;
 		border: 3px solid #ccc;
 		background-color: white;
-		color: white;
+		color: #ccc;
+		font-weight: bold;
 		border-radius: 50px;
 		float: left;
 	}
@@ -156,13 +157,13 @@
 					<div>
 						<span class="question"><%= question[i] %></span>
 						<div class="user_select_div">
-							<button type="button" class="user_select_btn btn-start disagree super" id="q<%=i%>_chk1" name="q<%=i%>_user_select1" value="1" onclick="select_btn(<%=i%>, 1, <%=question.length%>)"></button>
+							<button type="button" class="user_select_btn btn-start disagree super" id="q<%=i%>_chk1" name="q<%=i%>_user_select1" value="1" onclick="select_btn(<%=i%>, 1, <%=question.length%>)">비동의</button>
 							<button type="button" class="user_select_btn disagree" id="q<%=i%>_chk2" name="q<%=i%>_user_select2" value="2" onclick="select_btn(<%=i%>, 2, <%=question.length%>)"></button>
 							<button type="button" class="user_select_btn disagree little" id="q<%=i%>_chk3" name="q<%=i%>_user_select3" value="3" onclick="select_btn(<%=i%>, 3, <%=question.length%>)"></button>
 							<button type="button" class="user_select_btn idk" id="q<%=i%>_chk4" name="q<%=i%>_user_select4" value="4" onclick="select_btn(<%=i%>, 4, <%=question.length%>)"></button>
 							<button type="button" class="user_select_btn agree little" id="q<%=i%>_chk5" name="q<%=i%>_user_select5" value="5" onclick="select_btn(<%=i%>, 5, <%=question.length%>)"></button>
 							<button type="button" class="user_select_btn agree" id="q<%=i%>_chk6" name="q<%=i%>_user_select6" value="6" onclick="select_btn(<%=i%>, 6, <%=question.length%>)"></button>
-							<button type="button" class="user_select_btn agree super" id="q<%=i%>_chk7" name="q<%=i%>_user_select7" value="7" onclick="select_btn(<%=i%>, 7, <%=question.length%>)"></button>
+							<button type="button" class="user_select_btn agree super" id="q<%=i%>_chk7" name="q<%=i%>_user_select7" value="7" onclick="select_btn(<%=i%>, 7, <%=question.length%>)">동의</button>
 						</div>
 					</div>
 					<br>
