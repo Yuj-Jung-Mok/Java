@@ -116,9 +116,10 @@
 <script>
 	var select_no = "";
 	var cnt = 0;
-	function select_btn(q, no) {
-		for(var i = 1; i <= 7; i++) {
+	function select_btn(q, no, len) {
+		for(var i = 1; i <= len - 1; i++) {
 			document.getElementById("q" + q + "_chk" + i).style.backgroundColor = "white";
+			document.getElementById("q" + q + "_chk" + i).style.border = "3px solid #ccc";
 			document.getElementById("q" + q + "_chk" + i).disabled = "disable";
 		}
 
@@ -132,8 +133,8 @@
 		cnt++;
 	}
 	
-	function test() {
-		if(cnt < 8) {
+	function test(len) {
+		if(cnt < len) {
 			alert("모든 문항을 선택해주세요.");
 		} else {
 			location.href = "mr?select_no=" + select_no;
@@ -155,13 +156,13 @@
 					<div>
 						<span class="question"><%= question[i] %></span>
 						<div class="user_select_div">
-							<button type="button" class="user_select_btn btn-start disagree super" id="q<%=i%>_chk1" name="q<%=i%>_user_select1" value="1" checked="checked" onclick="select_btn(<%=i%>, 1)"></button>
-							<button type="button" class="user_select_btn disagree" id="q<%=i%>_chk2" name="q<%=i%>_user_select2" value="2" onclick="select_btn(<%=i%>,2)"></button>
-							<button type="button" class="user_select_btn disagree little" id="q<%=i%>_chk3" name="q<%=i%>_user_select3" value="3" onclick="select_btn(<%=i%>,3)"></button>
-							<button type="button" class="user_select_btn idk" id="q<%=i%>_chk4" name="q<%=i%>_user_select4" value="4" onclick="select_btn(<%=i%>,4)"></button>
-							<button type="button" class="user_select_btn agree little" id="q<%=i%>_chk5" name="q<%=i%>_user_select5" value="5" onclick="select_btn(<%=i%>,5)"></button>
-							<button type="button" class="user_select_btn agree" id="q<%=i%>_chk6" name="q<%=i%>_user_select6" value="6" onclick="select_btn(<%=i%>,6)"></button>
-							<button type="button" class="user_select_btn agree super" id="q<%=i%>_chk7" name="q<%=i%>_user_select7" value="7" onclick="select_btn(<%=i%>,7)"></button>
+							<button type="button" class="user_select_btn btn-start disagree super" id="q<%=i%>_chk1" name="q<%=i%>_user_select1" value="1" onclick="select_btn(<%=i%>, 1, <%=question.length%>)"></button>
+							<button type="button" class="user_select_btn disagree" id="q<%=i%>_chk2" name="q<%=i%>_user_select2" value="2" onclick="select_btn(<%=i%>, 2, <%=question.length%>)"></button>
+							<button type="button" class="user_select_btn disagree little" id="q<%=i%>_chk3" name="q<%=i%>_user_select3" value="3" onclick="select_btn(<%=i%>, 3, <%=question.length%>)"></button>
+							<button type="button" class="user_select_btn idk" id="q<%=i%>_chk4" name="q<%=i%>_user_select4" value="4" onclick="select_btn(<%=i%>, 4, <%=question.length%>)"></button>
+							<button type="button" class="user_select_btn agree little" id="q<%=i%>_chk5" name="q<%=i%>_user_select5" value="5" onclick="select_btn(<%=i%>, 5, <%=question.length%>)"></button>
+							<button type="button" class="user_select_btn agree" id="q<%=i%>_chk6" name="q<%=i%>_user_select6" value="6" onclick="select_btn(<%=i%>, 6, <%=question.length%>)"></button>
+							<button type="button" class="user_select_btn agree super" id="q<%=i%>_chk7" name="q<%=i%>_user_select7" value="7" onclick="select_btn(<%=i%>, 7, <%=question.length%>)"></button>
 						</div>
 					</div>
 					<br>
@@ -172,7 +173,7 @@
 					}
 			%>
 			<div style="width: 800px; text-align: center; margin-top: 50px;">
-				<button style="color: white" class="w-btn w-btn-blue" type="button" onclick="test()">결과보기</button>
+				<button style="color: white" class="w-btn w-btn-blue" type="button" onclick="test(<%=question.length%>)">결과보기</button>
 			</div>
 			
 			<%	
